@@ -21,3 +21,4 @@ coverage/
 .terraform/
 *.tfstate*
 terraform/environments/*.local.tfvars
+.terraform/
