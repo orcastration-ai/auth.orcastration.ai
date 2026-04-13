@@ -29,7 +29,7 @@ data "aws_ssm_parameter" "waf_acl_arn" {
 }
 
 module "site" {
-  source = "git::https://github.com/orcastration-ai/infra.git//terraform/modules/static-site?ref=main"
+  source = "git::https://github.com/orcastration-ai/.github.git//terraform/modules/static-site?ref=main"
 
   domain_name = var.domain_name
   zone_id     = data.aws_route53_zone.this.zone_id
