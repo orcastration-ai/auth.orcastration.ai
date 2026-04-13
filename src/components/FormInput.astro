@@ -1,0 +1,81 @@
+---
+/**
+ * Form input with label, placeholder, and optional error message.
+ * Supports text, email, and password types.
+ */
+interface Props {
+  label: string;
+  name: string;
+  type?: "text" | "email" | "password";
+  placeholder?: string;
+  required?: boolean;
+  id?: string;
+}
+
+const { label, name, type = "text", placeholder = "", required = false, id = name } = Astro.props;
+---
+
+<div class="form-input">
+  <label class="form-input__label" for={id}>{label}</label>
+  <input
+    class="form-input__field"
+    type={type}
+    name={name}
+    id={id}
+    placeholder={placeholder}
+    required={required}
+    autocomplete={type === "password" ? "current-password" : type === "email" ? "email" : undefined}
+  />
+  <p class="form-input__error" aria-live="polite"></p>
+</div>
+
+<style>
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-input__label {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: #314158;
+    line-height: 20px;
+  }
+
+  .form-input__field {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: var(--orca-font-display);
+    font-size: 16px;
+    color: #0f172b;
+    height: 46px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .form-input__field::placeholder {
+    color: #90a1b9;
+  }
+
+  .form-input__field:focus {
+    border-color: var(--orca-signal);
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15);
+  }
+
+  .form-input__error {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    color: #e7000b;
+    line-height: 20px;
+    min-height: 20px;
+    margin: 0;
+  }
+
+  .form-input__error:empty {
+    display: none;
+  }
+</style>

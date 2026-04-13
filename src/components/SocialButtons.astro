@@ -1,0 +1,66 @@
+---
+/**
+ * OAuth social login buttons — Google and Facebook side by side.
+ */
+---
+
+<div class="social-buttons">
+  <button type="button" class="social-button">
+    <svg class="social-button__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.171 8.368h-.67v-.035H10v3.333h4.71A4.998 4.998 0 0 1 5 10a5 5 0 0 1 5-5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667a8.333 8.333 0 1 0 8.171 6.7Z" fill="#FFC107"/>
+      <path d="M2.627 6.121 5.365 8.13A4.998 4.998 0 0 1 10 5c1.275 0 2.434.48 3.317 1.266l2.357-2.357A8.295 8.295 0 0 0 10 1.667 8.329 8.329 0 0 0 2.627 6.12Z" fill="#FF3D00"/>
+      <path d="M10 18.333a8.294 8.294 0 0 0 5.587-2.163l-2.579-2.183A4.963 4.963 0 0 1 10 15a4.998 4.998 0 0 1-4.701-3.315L2.578 13.82A8.327 8.327 0 0 0 10 18.333Z" fill="#4CAF50"/>
+      <path d="M18.171 8.368H17.5v-.035H10v3.333h4.71a5.017 5.017 0 0 1-1.703 2.321l2.58 2.183c-.183.166 2.746-2.003 2.746-6.17 0-.559-.057-1.104-.162-1.632Z" fill="#1976D2"/>
+    </svg>
+    <span class="social-button__label">Google</span>
+  </button>
+
+  <button type="button" class="social-button">
+    <svg class="social-button__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987H5.898V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10Z" fill="#1877F2"/>
+      <path d="m13.893 12.89.443-2.89h-2.773V8.124c0-.79.387-1.563 1.63-1.563h1.26v-2.46s-1.143-.195-2.237-.195c-2.286 0-3.778 1.385-3.778 3.89V10H5.898v2.89h2.54v6.988a10.07 10.07 0 0 0 3.124 0V12.89h2.33Z" fill="#fff"/>
+    </svg>
+    <span class="social-button__label">Facebook</span>
+  </button>
+</div>
+
+<style>
+  .social-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .social-button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .social-button:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+
+  .social-button__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .social-button__label {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: #314158;
+  }
+</style>

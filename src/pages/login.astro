@@ -1,0 +1,258 @@
+---
+import Base from "../layouts/Base.astro";
+import AuthLayout from "../components/AuthLayout.astro";
+import FormInput from "../components/FormInput.astro";
+import FormButton from "../components/FormButton.astro";
+import Divider from "../components/Divider.astro";
+import SocialButtons from "../components/SocialButtons.astro";
+import WalletButton from "../components/WalletButton.astro";
+---
+
+<Base
+  title="Sign in — Orca"
+  description="Sign in to your Orca workspace."
+>
+  <AuthLayout>
+    <!-- Step 1: Email -->
+    <div id="step-email" class="auth-step">
+      <div class="auth-header">
+        <h1 class="auth-title">Sign in to your account</h1>
+        <p class="auth-subtitle">Access your Orca workspace</p>
+      </div>
+
+      <form id="email-form" class="auth-form" novalidate>
+        <FormInput
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+        />
+        <FormButton type="submit">Continue</FormButton>
+      </form>
+
+      <Divider />
+
+      <SocialButtons />
+
+      <WalletButton label="Sign in with wallet" />
+
+      <div class="auth-footer">
+        <p class="auth-footer__text">
+          Don't have an account? <a href="/register" class="auth-link">Create account</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 2: Password -->
+    <div id="step-password" class="auth-step" hidden>
+      <div class="auth-header">
+        <h1 class="auth-title">Sign in to your account</h1>
+        <p class="auth-subtitle">Access your Orca workspace</p>
+      </div>
+
+      <form id="password-form" class="auth-form" novalidate>
+        <div class="email-display">
+          <label class="email-display__label">Email</label>
+          <div class="email-display__row">
+            <span id="display-email" class="email-display__value"></span>
+            <button type="button" id="change-email" class="email-display__change">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 1.5l2 2-7 7H1.5V8.5l7-7Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Change
+            </button>
+          </div>
+        </div>
+
+        <FormInput
+          label="Password"
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          required
+          id="password"
+        />
+
+        <div class="forgot-row">
+          <a href="/forgot-password" class="auth-link">Forgot password?</a>
+        </div>
+
+        <FormButton type="submit">Sign in</FormButton>
+      </form>
+
+      <div class="auth-footer">
+        <p class="auth-footer__text">
+          Don't have an account? <a href="/register" class="auth-link">Create account</a>
+        </p>
+      </div>
+    </div>
+  </AuthLayout>
+</Base>
+
+<style>
+  .auth-step {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .auth-step[hidden] {
+    display: none;
+  }
+
+  .auth-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .auth-title {
+    font-family: var(--orca-font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: #0f172b;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .auth-subtitle {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    color: #62748e;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .auth-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 17px;
+  }
+
+  .auth-footer__text {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    color: #45556c;
+    text-align: center;
+    margin: 0;
+  }
+
+  .auth-link {
+    color: var(--orca-signal);
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  .auth-link:hover {
+    text-decoration: underline;
+  }
+
+  .email-display {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .email-display__label {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: #314158;
+    line-height: 20px;
+  }
+
+  .email-display__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    height: 46px;
+  }
+
+  .email-display__value {
+    font-family: var(--orca-font-display);
+    font-size: 16px;
+    color: #0f172b;
+  }
+
+  .email-display__change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    color: var(--orca-signal);
+    padding: 0;
+  }
+
+  .email-display__change:hover {
+    text-decoration: underline;
+  }
+
+  .forgot-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+</style>
+
+<script>
+  const stepEmail = document.getElementById("step-email")!;
+  const stepPassword = document.getElementById("step-password")!;
+  const emailForm = document.getElementById("email-form") as HTMLFormElement;
+  const passwordForm = document.getElementById("password-form") as HTMLFormElement;
+  const displayEmail = document.getElementById("display-email")!;
+  const changeEmail = document.getElementById("change-email")!;
+
+  function showStep(step: "email" | "password") {
+    stepEmail.hidden = step !== "email";
+    stepPassword.hidden = step !== "password";
+  }
+
+  emailForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = emailForm.querySelector<HTMLInputElement>('input[name="email"]')!;
+    const error = emailForm.querySelector<HTMLParagraphElement>(".form-input__error")!;
+
+    if (!input.value.trim()) {
+      error.textContent = "Email is required";
+      return;
+    }
+
+    error.textContent = "";
+    displayEmail.textContent = input.value;
+    showStep("password");
+  });
+
+  changeEmail.addEventListener("click", () => {
+    showStep("email");
+    const input = emailForm.querySelector<HTMLInputElement>('input[name="email"]')!;
+    input.focus();
+  });
+
+  passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = passwordForm.querySelector<HTMLInputElement>('input[name="password"]')!;
+    const error = passwordForm.querySelector<HTMLParagraphElement>(".form-input__error")!;
+
+    if (!input.value.trim()) {
+      error.textContent = "Password is required";
+      return;
+    }
+
+    error.textContent = "";
+    // Auth submission will be wired up when backend is ready
+  });
+</script>

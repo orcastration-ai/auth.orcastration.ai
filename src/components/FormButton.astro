@@ -1,0 +1,69 @@
+---
+/**
+ * Auth form button — primary (filled cyan) or outline variant.
+ */
+interface Props {
+  variant?: "primary" | "outline";
+  type?: "submit" | "button";
+  fullWidth?: boolean;
+}
+
+const { variant = "primary", type = "submit", fullWidth = true } = Astro.props;
+---
+
+<button
+  class:list={[
+    "form-button",
+    `form-button--${variant}`,
+    { "form-button--full": fullWidth },
+  ]}
+  type={type}
+>
+  <slot />
+</button>
+
+<style>
+  .form-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--orca-font-display);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 14px;
+    height: 44px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+    text-decoration: none;
+  }
+
+  .form-button--full {
+    width: 100%;
+  }
+
+  .form-button--primary {
+    background: var(--orca-signal);
+    color: #ffffff;
+    border: none;
+  }
+
+  .form-button--primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .form-button--outline {
+    background: transparent;
+    color: #314158;
+    border: 2px solid #e2e8f0;
+  }
+
+  .form-button--outline:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+</style>

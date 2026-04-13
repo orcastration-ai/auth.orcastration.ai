@@ -1,0 +1,39 @@
+---
+/**
+ * Horizontal divider with centered label text.
+ * Used between form sections (e.g., "or continue with").
+ */
+interface Props {
+  label?: string;
+}
+
+const { label = "or continue with" } = Astro.props;
+---
+
+<div class="divider">
+  <div class="divider__line"></div>
+  <span class="divider__label">{label}</span>
+  <div class="divider__line"></div>
+</div>
+
+<style>
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .divider__line {
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+  }
+
+  .divider__label {
+    font-family: var(--orca-font-display);
+    font-size: 14px;
+    color: #62748e;
+    white-space: nowrap;
+  }
+</style>

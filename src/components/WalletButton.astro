@@ -1,0 +1,47 @@
+---
+/**
+ * Wallet authentication button — outline style with wallet icon.
+ */
+interface Props {
+  label?: string;
+}
+
+const { label = "Sign in with wallet" } = Astro.props;
+---
+
+<button type="button" class="wallet-button">
+  <svg class="wallet-button__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14 4H2V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1ZM14 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1Zm-2.5 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" fill="#314158"/>
+  </svg>
+  <span>{label}</span>
+</button>
+
+<style>
+  .wallet-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    padding: 0 24px;
+    background: transparent;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    cursor: pointer;
+    font-family: var(--orca-font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: #314158;
+    transition: all 0.15s;
+  }
+
+  .wallet-button:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+
+  .wallet-button__icon {
+    flex-shrink: 0;
+  }
+</style>

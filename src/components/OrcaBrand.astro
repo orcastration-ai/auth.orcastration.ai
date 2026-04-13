@@ -1,0 +1,39 @@
+---
+/**
+ * Orca brand mark — logo + wordmark.
+ * Renders the favicon SVG alongside the styled "orca(stration)" text.
+ */
+---
+
+<a href="/" class="orca-brand">
+  <img src="/favicon.svg" alt="Orca" class="orca-brand__logo" width="32" height="32" />
+  <span class="orca-brand__wordmark">
+    <span class="orca-brand__accent">orca</span>(stration)
+  </span>
+</a>
+
+<style>
+  .orca-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .orca-brand__logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .orca-brand__wordmark {
+    font-family: var(--orca-font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--orca-breach);
+    letter-spacing: -0.5px;
+  }
+
+  .orca-brand__accent {
+    color: var(--orca-signal);
+  }
+</style>
