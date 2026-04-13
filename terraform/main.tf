@@ -34,6 +34,6 @@ module "site" {
   domain_name = var.domain_name
   zone_id     = data.aws_route53_zone.this.zone_id
   environment = var.environment
-  spa_mode    = true
+  spa_mode    = false
   web_acl_id  = var.enable_waf ? data.aws_ssm_parameter.waf_acl_arn[0].value : ""
 }
